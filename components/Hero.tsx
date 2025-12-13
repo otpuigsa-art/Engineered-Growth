@@ -27,13 +27,13 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative z-10 pt-32 pb-8 lg:pt-32 lg:pb-32 px-6 overflow-hidden min-h-screen lg:min-h-[800px] flex items-center">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-0 lg:gap-20 items-center w-full relative">
+    <section className="relative z-10 pt-32 pb-12 lg:pt-48 lg:pb-32 px-6 overflow-hidden">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative">
         
         {/* Left Column: Content */}
-        <div className="max-w-2xl relative z-20 text-center lg:text-left mx-auto lg:mx-0 pb-0 lg:pb-0">
+        <div className="max-w-2xl relative z-20 text-center lg:text-left mx-auto lg:mx-0">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-300 text-[10px] font-medium uppercase tracking-wider mb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-300 text-[10px] font-medium uppercase tracking-wider mb-6 md:mb-8 backdrop-blur-sm">
             <span className="flex h-2 w-2 relative">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-violet-500"></span>
@@ -47,7 +47,7 @@ const Hero: React.FC = () => {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">para E-commerce</span>
           </h1>
 
-          <p className="text-base md:text-lg text-slate-400 max-w-lg leading-relaxed mb-8 font-light mx-auto lg:mx-0">
+          <p className="text-base md:text-lg text-slate-400 max-w-lg leading-relaxed mb-8 font-light mx-auto lg:mx-0 drop-shadow-md lg:drop-shadow-none">
              Transforma la incertidumbre en un sistema predecible. Aplico principios de ingeniería y Data Science a tus campañas de Meta Ads para escalar la facturación con precisión matemática.
           </p>
 
@@ -63,7 +63,7 @@ const Hero: React.FC = () => {
             <a 
               href="#procedure" 
               onClick={(e) => scrollToSection(e, '#procedure')}
-              className="w-full sm:w-auto px-8 py-3.5 rounded-lg text-white border border-white/10 hover:bg-white/5 font-medium text-sm transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-lg text-white border border-white/10 hover:bg-white/5 font-medium text-sm transition-all flex items-center justify-center gap-2 backdrop-blur-sm"
             >
               <PlayCircle className="w-4 h-4" />
               Ver Procedimiento
@@ -84,10 +84,10 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Right Column: Orbit Visual */}
-        {/* Adjusted: Significantly reduced height and added negative top margin on mobile to close the gap */}
-        <div className="relative w-full h-[320px] lg:h-[600px] flex items-center justify-center perspective-1000 z-0 -mt-8 lg:mt-0">
+        <div className="relative flex items-center justify-center perspective-1000 z-10 mt-8 lg:mt-0">
           
-          <div className="transform scale-[0.55] sm:scale-75 md:scale-100 origin-center relative flex items-center justify-center w-full h-full">
+          {/* Adjusted scale to 0.55 on mobile to prevent cutoff and overcrowding */}
+          <div className="transform scale-[0.55] md:scale-100 relative flex items-center justify-center w-[300px] h-[300px] md:w-[600px] md:h-[600px]">
             {/* Radial Gradient Background for Glow */}
             <div className="absolute inset-0 bg-radial-gradient from-violet-900/20 via-transparent to-transparent opacity-50 blur-3xl"></div>
 
@@ -157,8 +157,8 @@ const Hero: React.FC = () => {
               </div>
             </div>
             
-            {/* Notification Pop-up (Floating) */}
-            <div className="absolute bottom-10 right-0 md:right-10 glass-card p-4 rounded-xl flex items-center gap-3 animate-float w-64 border-l-4 border-l-green-500 z-30 shadow-2xl scale-90 md:scale-100 origin-bottom-right hidden sm:flex">
+            {/* Notification Pop-up */}
+            <div className="absolute bottom-10 right-0 md:right-10 glass-card p-4 rounded-xl items-center gap-3 animate-float w-64 border-l-4 border-l-green-500 z-30 shadow-2xl scale-90 md:scale-100 origin-bottom-right hidden lg:flex">
               <div className="relative">
                 <div className="w-10 h-10 rounded-full bg-slate-700 overflow-hidden">
                   <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sofia" alt="User" className="w-full h-full object-cover" />

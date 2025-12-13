@@ -1,25 +1,38 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  onNavigate: (page: string) => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     setIsOpen(false);
+    
+    // Always navigate to home first logic
+    onNavigate('home');
+
     if (id === 'top') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
-    const element = document.querySelector(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+
+    // Small timeout to allow the home view to render if we were on legal page
+    setTimeout(() => {
+      const element = document.querySelector(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
   };
 
   return (
     <>
-      <div className="fixed top-6 left-0 w-full z-50 flex justify-center px-4">
+      {/* Increased to top-10 for better notch/island clearance on mobile */}
+      <div className="fixed top-10 sm:top-6 left-0 w-full z-50 flex justify-center px-4">
         <nav className="glass-card rounded-full px-2 py-2 flex items-center justify-between gap-1 shadow-2xl shadow-violet-900/10 backdrop-blur-md max-w-full sm:max-w-fit relative z-50">
           <div className="flex items-center">
             <a 
