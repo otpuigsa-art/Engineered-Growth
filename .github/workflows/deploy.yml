@@ -1,42 +1,52 @@
-name: build_and_deploy
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main, master ]
+    branches: ["main"]
+  workflow_dispatch:
+
+# Permisos necesarios para desplegar en Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Permite solo un despliegue concurrente
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  build_and_deploy:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
+          cache: 'npm'
 
-      # Usamos npm install en lugar de npm ci para evitar el error de package-lock.json faltante
       - name: Install Dependencies
         run: npm install
 
       - name: Build
         run: npm run build
 
+      # Este paso es CRUCIAL para que GitHub detecte la configuración de Pages correctamente
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: './dist'
 
-  deploy:
-    needs: build_and_deploy
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
