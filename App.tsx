@@ -20,11 +20,11 @@ const App: React.FC = () => {
   };
 
   return (
-    <>
+    <div className="relative w-full max-w-[100vw] overflow-x-hidden min-h-screen flex flex-col">
       <Background />
       <Navbar onNavigate={handleNavigate} />
       
-      <main>
+      <main className="flex-grow">
         {currentPage === 'home' ? (
           <>
             <Hero />
@@ -44,7 +44,7 @@ const App: React.FC = () => {
       </main>
       
       <Footer onNavigate={handleNavigate} />
-    </>
+    </div>
   );
 };
 

@@ -86,8 +86,8 @@ const Hero: React.FC = () => {
         {/* Right Column: Orbit Visual */}
         <div className="relative flex items-center justify-center perspective-1000 z-10 mt-8 lg:mt-0">
           
-          {/* Adjusted scale to 0.55 on mobile to prevent cutoff and overcrowding */}
-          <div className="transform scale-[0.55] md:scale-100 relative flex items-center justify-center w-[300px] h-[300px] md:w-[600px] md:h-[600px]">
+          {/* Adjusted scale for better responsiveness across all devices */}
+          <div className="transform scale-[0.55] sm:scale-75 md:scale-100 relative flex items-center justify-center w-[300px] h-[300px] md:w-[600px] md:h-[600px] max-w-full">
             {/* Radial Gradient Background for Glow */}
             <div className="absolute inset-0 bg-radial-gradient from-violet-900/20 via-transparent to-transparent opacity-50 blur-3xl"></div>
 
