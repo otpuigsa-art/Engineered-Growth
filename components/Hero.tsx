@@ -56,7 +56,7 @@ const Hero: React.FC = () => {
             <a 
               href="#contact" 
               onClick={(e) => scrollToSection(e, '#contact')}
-              className="w-full sm:w-auto px-8 py-3.5 bg-violet-600 hover:bg-violet-500 text-white rounded-lg font-semibold text-sm transition-all shadow-[0_0_20px_rgba(124,58,237,0.3)] text-center"
+              className="w-full sm:w-auto px-8 py-3.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-semibold text-sm transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)] text-center"
             >
               Empezar Auditoría Gratis
             </a>
